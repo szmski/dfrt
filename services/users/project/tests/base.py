@@ -1,4 +1,4 @@
-from flask_tetsting import TestCase
+from flask_testing import TestCase
 from project import app, db
 
 class BaseTestCase(TestCase):

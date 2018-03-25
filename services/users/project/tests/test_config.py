@@ -3,6 +3,8 @@ import os
 from flask import current_app
 from flask_testing import TestCase
 
+from project import app
+
 class TestDevelopmentConfig(TestCase):
     def create_app(self):
         app.config.from_object("project.config.DevelopmentConfig")
@@ -24,7 +26,7 @@ class TestTestingConfig(TestCase):
     def test_app_is_testing(self):
         self.assertTrue(app.config["SECRET_KEY"] == "my_precious")
         self.assertTrue(app.config["TESTING"])
-        self.assertFalse(app.config["PREVERSE_CONTEXT_ON_EXPECTION"])
+        self.assertFalse(app.config["PRESERVE_CONTEXT_ON_EXCEPTION"])
         self.assertTrue(
             app.config["SQLALCHEMY_DATABASE_URI"] == 
             os.environ.get('DATABASE_TEST_URL')
