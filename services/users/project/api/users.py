@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify, request
-
 from sqlalchemy import exc
 
 from project.api.models import User
@@ -70,3 +69,15 @@ def get_single_user(user_id):
             return jsonify(response_object), 200
     except ValueError:
         return jsonify(response_object), 404
+
+@users_blueprint.route("/users", methods=["GET"])
+def get_all_users():
+    """Get all users"""
+    response_object = {
+        'status': 'success',
+        'data': {
+            'users': [user.to_json() for user in User.query.all()]
+        }
+    }
+
+    return jsonify(response_object), 200
