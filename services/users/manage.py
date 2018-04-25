@@ -1,4 +1,5 @@
-import unittest, coverage
+import unittest
+import coverage
 
 from flask.cli import FlaskGroup
 
