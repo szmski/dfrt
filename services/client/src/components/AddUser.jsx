@@ -2,7 +2,7 @@ import React from 'react';
 
 const AddUser = (props) => {
     return (
-        <form>
+        <form onSubmit={(event) => {props.addUser(event)}}>
             <div className="form-group">
                 <input
                     name="username"
@@ -10,6 +10,9 @@ const AddUser = (props) => {
                     type="text"
                     placeholder="Enter a username"
                     required
+                    value={props.username}
+                    onChange={props.handleChange}
+                    // onChange={(event) => {console.log(event.target.value)}}
                 />
             </div>
             <div className="form-group">
@@ -19,6 +22,9 @@ const AddUser = (props) => {
                     type="email"
                     placeholder="Enter an email address"
                     required
+                    value={props.email}
+                    onChange={props.handleChange}
+                    // onChange={(event) => {console.log(event.target.value)}}
                 />
             </div>
             <input
